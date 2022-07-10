@@ -1,0 +1,26 @@
+#zheyanggbuhao
+
+#calc:
+#	g++ add.cpp mul.cpp cal.cpp -o calc
+#OBJ=add.o mul.o cal.o
+#TARGET=cal
+
+.PHONY:show clean
+
+cal:add.o mul.o cal.o
+	g++  add.o mul.o cal.o -o cal
+
+cal.o:cal.cpp
+	g++ -c cal.cpp -o cal.o
+
+add.o:add.cpp
+	g++ -c add.cpp -o add.o
+
+mul.o:mul.cpp
+	g++ -c mul.cpp -o mul.o
+
+clean:
+	rm -rf *.o cal
+
+show:
+	echo $(AS)

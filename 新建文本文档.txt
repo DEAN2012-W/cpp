@@ -1,0 +1,16 @@
+sudo apt-get install autoconf automake libtool curl make g++ unzip
+
+ ./configure
+ make -j$(nproc) # $(nproc) ensures it uses all cores for compilation
+ make check
+ sudo make install
+ sudo ldconfig # refresh shared library cache.
+
+
+./configure --prefix=/usr
+
+pkg-config --cflags protobuf         # print compiler flags
+pkg-config --libs protobuf           # print linker flags
+pkg-config --cflags --libs protobuf  # print both
+
+c++ my_program.cc my_proto.pb.cc `pkg-config --cflags --libs protobuf`
